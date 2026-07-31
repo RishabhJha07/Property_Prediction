@@ -1,12 +1,17 @@
-from flask import Flask, request, jsonify
-app = Flask(__name__)
+from flask import Flask, request, jsonify, render_template
+
 import util
 
-app = Flask(__name__)
+app = Flask(__name__,
+            template_folder="templates",
+            static_folder="static")
 
 # Load model and locations when the app starts
 util.load_saved_artifacts()
 
+@app.route("/")
+def home():
+    return render_template("app.html")
 
 @app.route('/get_location_names')
 def get_location_names():
