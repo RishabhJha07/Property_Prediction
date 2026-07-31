@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 app = Flask(__name__)
-from server import util
+import util
 
 @app.route('/get_location_names')
 def get_location_names():
